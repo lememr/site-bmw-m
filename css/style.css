@@ -1,0 +1,485 @@
+:root {
+  --canvas: #000000;
+  --surface-soft: #0d0d0d;
+  --surface-card: #1a1a1a;
+  --surface-elevated: #262626;
+  --carbon-gray: #2b2b2b;
+  --hairline: #3c3c3c;
+  --hairline-strong: #262626;
+  --muted: #7e7e7e;
+  --body: #bbbbbb;
+  --body-strong: #e6e6e6;
+  --ink: #ffffff;
+  --on-dark: #ffffff;
+  --m-blue-light: #0066b1;
+  --m-blue-dark: #1c69d4;
+  --m-red: #e22718;
+  --warning: #f4b400;
+  --success: #0fa336;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--canvas);
+  color: var(--on-dark);
+  line-height: 1.5;
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 64px;
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.m-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.m-text {
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.m-stripe {
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--m-blue-light), var(--m-blue-dark), var(--m-red));
+  margin-top: 2px;
+}
+
+.m-badge.small .m-text {
+  font-size: 1.1rem;
+}
+
+.m-badge.small .m-stripe {
+  height: 3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--on-dark);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+/* M Stripe Divider */
+.m-stripe-divider {
+  width: 48px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--m-blue-light), var(--m-blue-dark), var(--m-red));
+}
+
+.m-stripe-divider.center {
+  margin: 0 auto;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: var(--canvas);
+  padding-top: 64px;
+}
+
+.hero-visual {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.track-line {
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, var(--hairline), transparent);
+  opacity: 0.3;
+}
+
+.track-line.line-1 {
+  top: 35%;
+  transform: rotate(-8deg);
+}
+
+.track-line.line-2 {
+  top: 55%;
+  transform: rotate(6deg);
+}
+
+.track-line.line-3 {
+  top: 75%;
+  transform: rotate(-3deg);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 2rem;
+}
+
+.hero .m-stripe-divider {
+  margin: 0 auto 1.5rem;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.hero p {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: var(--body);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 16px 32px;
+  background: var(--ink);
+  color: var(--canvas);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  border-radius: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  text-transform: uppercase;
+  height: 48px;
+  line-height: 1;
+}
+
+.cta:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.cta.outline {
+  background: transparent;
+  color: var(--on-dark);
+  border: 1px solid var(--hairline);
+}
+
+.cta.outline:hover {
+  border-color: var(--body);
+}
+
+/* Models */
+.models {
+  padding: 96px 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.models h2 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+
+.models .m-stripe-divider {
+  margin: 1.2rem auto 2.5rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.6rem;
+}
+
+.card {
+  background: var(--surface-card);
+  border: 1px solid var(--hairline);
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--hairline-strong);
+}
+
+.card-img {
+  height: 180px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+}
+
+.card-img.m3 {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 50%, #1a0a0a 100%);
+}
+
+.card-img.m4 {
+  background: linear-gradient(135deg, #0d0d14 0%, #0a0a12 50%, #0d0d14 100%);
+}
+
+.card-img.x5m {
+  background: linear-gradient(135deg, #141414 0%, #0d0d0d 50%, #1a1414 100%);
+}
+
+.card-img.xm {
+  background: linear-gradient(135deg, #0f1f0f 0%, #0d0d0d 50%, #1f1f0f 100%);
+}
+
+.card-body {
+  padding: 24px;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+
+.card .spec {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--body);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.tag {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 4px 10px;
+  border: 1px solid var(--hairline);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+}
+
+/* Motorsport */
+.motorsport {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  padding: 96px 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.motorsport-visual {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+  background: var(--surface-soft);
+}
+
+.track-aura {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 50%, rgba(0,102,177,0.12), transparent 60%),
+    radial-gradient(circle at 70% 50%, rgba(226,39,24,0.08), transparent 60%);
+}
+
+.motorsport-content .m-stripe-divider {
+  margin-bottom: 1.2rem;
+}
+
+.motorsport h2 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+
+.motorsport p {
+  margin-top: 1rem;
+  color: var(--body);
+  font-weight: 300;
+  max-width: 440px;
+  line-height: 1.5;
+}
+
+/* Performance */
+.performance {
+  padding: 96px 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.performance h2 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+
+.performance .m-stripe-divider {
+  margin: 1.2rem auto 2.5rem;
+}
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.6rem;
+}
+
+.spec-cell {
+  background: var(--surface-soft);
+  padding: 24px;
+  border: 1px solid var(--hairline);
+}
+
+.spec-cell h4 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+
+.spec-cell p {
+  font-size: 0.85rem;
+  color: var(--body);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--hairline);
+  padding: 64px 2rem 2.5rem;
+  text-align: center;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.4rem;
+}
+
+.slogan {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.6rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--body);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--on-dark);
+}
+
+.copy {
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* Responsive */
+@media (max-width: 820px) {
+  .motorsport {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .motorsport p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .motorsport-visual {
+    height: 200px;
+  }
+  .nav-links {
+    display: none;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 8vw, 4rem);
+  }
+}
